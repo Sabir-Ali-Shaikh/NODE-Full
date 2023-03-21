@@ -35,11 +35,11 @@ function ops(ch) {
     case 1:
       r.question(
         "Enter Path Where You want to create a Folder:\n",
-        (pathname) => {
-          r.question("Now Enter folder Name:\n", (foldername) => {
-            if (!fs.existsSync(foldername)) {
-              fs.mkdirSync(path.join(pathname, foldername));
-              console.log(`${foldername} file Created`);
+        (pathName) => {
+          r.question("Now Enter folder Name:\n", (folderName) => {
+            if (!fs.existsSync(folderName)) {
+              fs.mkdirSync(path.join(pathName, folderName));
+              console.log(`${folderName} file Created`);
               menu();
             }
           });
@@ -50,11 +50,11 @@ function ops(ch) {
     case 2:
       r.question(
         "Enter Path Where You want to create a File:\n",
-        (pathname) => {
-          r.question(" Now Enter file Name:\n", (filename) => {
-            if (!fs.existsSync(filename)) {
-              fs.writeFileSync(path.join(pathname, filename), "");
-              console.log(`${filename} file Created`);
+        (pathName) => {
+          r.question(" Now Enter file Name:\n", (fileName) => {
+            if (!fs.existsSync(fileName)) {
+              fs.writeFileSync(path.join(pathName, fileName), "");
+              console.log(`${fileName} file Created`);
               menu();
             }
           });
@@ -64,9 +64,9 @@ function ops(ch) {
       break;
 
     case 3:
-      r.question("Enter Path of the Folder to Delete:\n", (pathname) => {
+      r.question("Enter Path of the Folder to Delete:\n", (pathName) => {
         r.question(" Now Enter folder Name to Delete:\n", (dir) => {
-          fs.rm(path.join(pathname, dir), { recursive: true, force: true });
+          fs.rm(path.join(pathName, dir), { recursive: true, force: true });
           menu();
         });
       });
@@ -74,13 +74,13 @@ function ops(ch) {
       break;
 
     case 4:
-      r.question("Enter Path of file to Delete:\n", (pathname) => {
+      r.question("Enter Path of file to Delete:\n", (pathName) => {
         r.question(
-          "Enter the Filename With Extention To delete\n",
+          "Enter the FileName With Extention To delete\n",
           (delFile) => {
             console.log(delFile);
-            if (fs.existsSync(path.join(pathname, delFile))) {
-              fs.unlinkSync(path.join(pathname, delFile));
+            if (fs.existsSync(path.join(pathName, delFile))) {
+              fs.unlinkSync(path.join(pathName, delFile));
               console.log("File Deleted");
               menu();
             } else {
@@ -96,13 +96,13 @@ function ops(ch) {
     case 5:
       r.question(
         "Enter Path of folder/file to Rename (Note: for file add extension too):\n",
-        (pathname) => {
+        (pathName) => {
           r.question(
             "Enter folder/file Name to Rename (Note: for file add extension too): \n",
             (oldname) => {
-              let oldPath = path.join(pathname, oldname);
+              let oldPath = path.join(pathName, oldname);
               r.question("Enter New Folder Name\n", (newName) => {
-                let newPath = path.join(pathname, newName);
+                let newPath = path.join(pathName, newName);
                 try {
                   fs.renameSync(oldPath, newPath);
                   console.log("Folder Name Changed");
@@ -118,12 +118,12 @@ function ops(ch) {
 
       break;
     case 6:
-      r.question("Enter path of file you want to Write:\n", (pathname) => {
-        r.question(" Now Enter Name of the file :\n", (filename) => {
+      r.question("Enter path of file you want to Write:\n", (pathName) => {
+        r.question(" Now Enter Name of the file :\n", (fileName) => {
           r.question("Enter The Content:\n", (content) => {
             console.log(content);
             try {
-              let writeFilePath = path.join(pathname, filename);
+              let writeFilePath = path.join(pathName, fileName);
               console.log(writeFilePath);
               fs.appendFileSync(
                 writeFilePath,
