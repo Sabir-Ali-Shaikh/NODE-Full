@@ -13,7 +13,7 @@ let condition = {
   tempC: 34.8,
   tempF: 89.6,
   uv: 7,
-  cloud:10
+  cloud: 10,
 };
 
 let item = {
@@ -62,42 +62,41 @@ let item = {
 //   }
 // );
 
-// let dataPath = './modules/weatherData.txt"';
-// path.dirname(dataPath);
+const server = http.createServer(function (req, res) {
+  try {
+    res.setHeader("Access-Control-Allow-Origin", "*");
 
-// path.basename(dataPath);
-// path.extname(dataPath);
+    const linkPath = url.parse(req.url, true);
+    const path = linkPath.pathname;
+    let q = linkPath.query;
+    if (path === "/get-weather") {
+      if (q.city !== undefined) {
+        let data = functions.getWeatherData(q.city);
+        if (data !== undefined) {
+          res.write(JSON.stringify(data));
+          res.end();
+        } else {
+          res.end(
+            JSON.stringify({
+              succes: false,
+              message: "City Not found in Data Base",
+            })
+          );
+        }
+      }
+    } else if (path === "/city") {
+      res.end(JSON.stringify(functions.getLocation()));
+    } else {
+      res.end(
+        JSON.stringify({
+          message: "404 not found",
+        })
+      );
+    }
 
-// console.log(readFile());
-
-// const server = http.createServer(function (req, res) {
-//   try {
-//     res.setHeader("Access-Control-Allow-Origin", "*");
-//     const linkPath = url.parse(req.url, true);
-//     const path = linkPath.pathname;
-//     let q = linkPath.query;
-//     if (path == "/get-weather") {
-//       if (q.city !== undefined) {
-//         let data = functions.getWeatherData(q.city);
-//         // console.log(data);`  
-//         if (data !== undefined) {
-//           res.write(JSON.stringify(data));
-//           res.end();
-//         } else {
-//           res.write({
-//             succes: false,
-//           });
-//           res.end();
-//         }
-//       }
-//     }
-//     if (path == "/city") {
-//       res.end(JSON.stringify(functions.getLocation()));
-//     }
-
-//     // console.log(q.city);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-// server.listen(5000);
+    // console.log(q.city);
+  } catch (err) {
+    console.log(err);
+  }
+});
+server.listen(5000);

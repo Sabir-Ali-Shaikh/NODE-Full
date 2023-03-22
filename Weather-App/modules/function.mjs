@@ -28,7 +28,7 @@ export function getWeatherData(location) {
   try {
     const WeatherDB = readFiled();
     let result = WeatherDB.find(
-      (obj) => obj.location.city.toLowerCase() == location.toLowerCase()
+      (obj) => obj.location.city.toLowerCase() === location.toLowerCase()
     );
     console.log(result);
     return result;
@@ -40,7 +40,7 @@ export function getWeatherData(location) {
 export function addLocation(location, condition) {
   const WeatherDB = readFiled();
   let index = WeatherDB.findIndex(
-    (obj) => obj.location.city.toLowerCase() == location.city.toLowerCase()
+    (obj) => obj.location.city.toLowerCase() === location.city.toLowerCase()
   );
   if (index > -1) {
     console.log("City Already Exist Cannot Add");
@@ -54,7 +54,7 @@ export function addLocation(location, condition) {
 export function updateLocation(location, item) {
   const WeatherDB = readFiled();
   let index = WeatherDB.findIndex(
-    (obj) => obj.location.city.toLowerCase() == location.toLowerCase()
+    (obj) => obj.location.city.toLowerCase() === location.toLowerCase()
   );
   if (index > -1) {
     WeatherDB.splice(index, 1, item);
@@ -68,7 +68,7 @@ export function updateLocation(location, item) {
 export function removeLocation(location) {
   const WeatherDB = readFiled();
   let index = WeatherDB.findIndex(
-    (obj) => obj.location.city.toLowerCase() == location.toLowerCase()
+    (obj) => obj.location.city.toLowerCase() === location.toLowerCase()
   );
   if (index > -1) {
     WeatherDB.splice(index, 1);
@@ -79,7 +79,8 @@ export function removeLocation(location) {
   }
 }
 
-export function getLocation() {``
+export function getLocation() {
+  ``;
   const WeatherDB = readFiled();
   let citylocation = [];
   WeatherDB.forEach((obj) => {
