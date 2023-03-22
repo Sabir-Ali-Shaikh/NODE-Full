@@ -2,13 +2,13 @@ import fs from "fs";
 import readline from "readline";
 import process from "process";
 import path from "path";
+let menuChoice;
 
 const r = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-let menuChoice;
 function menu() {
   console.log("Enter The Process You Want to Continue:");
   console.log("1. Create a Folder");
