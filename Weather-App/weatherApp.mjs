@@ -31,36 +31,6 @@ let item = {
   },
 };
 
-// functions.getWeatherData("kolkata");
-// functions.addLocation(location, condition);
-// functions.removeLocation("hisar")
-// functions.updateLocation("patna", item);
-// functions.getLocation()
-
-// const notes = "./modules/weatherData.txt";
-// console.log(path.dirname(notes));
-// console.log(path.basename(notes));
-// // notes.txt
-// console.log(path.extname(notes));
-
-// for myself
-
-// fs.writeFile("./modules/weatherData.txt",s WeatherData.toString(), (err) => {
-//   if (err) {
-// console.error(err);
-//   }
-// });
-
-// fs.writeFile(
-//   "./modules/weatherData.txt",
-//   JSON.stringify(WeatherData),
-//   (err) => {
-//     if (err) {
-//       console.error(err);
-//       return;
-//     }
-//   }
-// );
 
 const server = http.createServer(function (req, res) {
   try {
@@ -94,7 +64,7 @@ const server = http.createServer(function (req, res) {
       );
     }
 
-    // console.log(q.city);
+
   } catch (err) {
     console.log(err);
   }
