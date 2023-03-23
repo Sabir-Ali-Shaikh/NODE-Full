@@ -9,7 +9,6 @@ const weatherdata = {
   message: "ok",
 };
 const server = http.createServer((req, res) => {
-  console.log(req);
   res.end(JSON.stringify(weatherdata));
 });
 
