@@ -45,7 +45,6 @@ function ops(ch) {
           });
         }
       );
-
       break;
     case 2:
       r.question(
@@ -60,7 +59,6 @@ function ops(ch) {
           });
         }
       );
-
       break;
 
     case 3:
