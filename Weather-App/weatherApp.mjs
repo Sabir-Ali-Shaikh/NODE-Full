@@ -31,7 +31,6 @@ let item = {
   },
 };
 
-
 const server = http.createServer(function (req, res) {
   try {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -63,8 +62,6 @@ const server = http.createServer(function (req, res) {
         })
       );
     }
-
-
   } catch (err) {
     console.log(err);
   }
