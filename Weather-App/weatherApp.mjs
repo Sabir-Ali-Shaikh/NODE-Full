@@ -2,34 +2,7 @@ import * as functions from "./modules/function.mjs";
 import http from "http";
 import url from "url";
 
-let location = {
-  city: "hisar",
-  lat: 23,
-  long: 29,
-};
 
-let condition = {
-  humidity: 51,
-  tempC: 34.8,
-  tempF: 89.6,
-  uv: 7,
-  cloud: 10,
-};
-
-let item = {
-  location: {
-    city: "patna",
-    lat: 56,
-    long: 34,
-  },
-
-  condition: {
-    humidity: 62,
-    tempC: 27,
-    tempF: 80.6,
-    uv: 8,
-  },
-};
 
 const server = http.createServer(function (req, res) {
   try {
